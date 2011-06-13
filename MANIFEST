@@ -1,14 +1,18 @@
-Build.PL
 Changes
+LICENSE
 MANIFEST
-META.yml # Will be created by "make dist"
+META.yml
+Makefile.PL
 README
+dist.ini
 lib/UNIVERSAL/can.pm
-t/lib/Test/SmallWarn.pm
 t/00-load.t
+t/SUPER-can.t
 t/always_warn.t
 t/bad-input.t
+t/bugs.t
 t/class.t
 t/deep-recursion.t
+t/isa-triggering-overload.t
+t/lib/Test/SmallWarn.pm
 t/object.t
-t/SUPER-can.t

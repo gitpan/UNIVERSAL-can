@@ -1,25 +1,24 @@
 ---
-name: UNIVERSAL-can
-version: 1.16
+abstract: 'work around buggy code calling UNIVERSAL::can() as a function'
 author:
-  - 'chromatic <chromatic@wgz.org>'
-abstract: Hack around people calling UNIVERSAL::can() as a function
-license: perl
-resources:
-  license: http://dev.perl.org/licenses/
+  - chromatic
 build_requires:
-  Test::Simple: 0.60
-requires:
-  Scalar::Util: ''
-  Test::Simple: 0.60
-  perl: v5.6.2
+  Test::More: 0
+  overload: 0
 configure_requires:
-  Module::Build: 0.35
-provides:
-  UNIVERSAL::can:
-    file: lib/UNIVERSAL/can.pm
-    version: 1.16
-generated_by: Module::Build version 0.35
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110930'
+license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
+name: UNIVERSAL-can
+requires:
+  Scalar::Util: 0
+  vars: 0
+  warnings::register: 0
+resources:
+  homepage: https://github.com/chromatic/UNIVERSAL-can
+  repository: https://github.com/chromatic/UNIVERSAL-can.git
+version: 1.20110613

@@ -1,16 +1,18 @@
 package UNIVERSAL::can;
+BEGIN {
+  $UNIVERSAL::can::VERSION = '1.20110613';
+}
+# ABSTRACT: work around buggy code calling UNIVERSAL::can() as a function
 
 use strict;
 use warnings;
 
-use vars qw( $VERSION $recursing );
-$VERSION = '1.16';
+use vars qw( $recursing $always_warn );
 
 use Scalar::Util 'blessed';
 use warnings::register;
 
 my $orig;
-use vars '$always_warn';
 
 BEGIN
 {
@@ -40,7 +42,8 @@ sub can
     goto &$orig if $recursing
                 || (   defined $caller
                    &&  defined $_[0]
-                   &&  eval { local $recursing = 1; $caller->isa($_[0]) } );
+                   &&  eval { local $recursing = 1;
+                              $caller->isa(blessed $_[0] || $_[0]) } );
 
     # call an overridden can() if it exists
     my $can = eval { $_[0]->$orig('can') || 0 };
@@ -76,11 +79,7 @@ __END__
 
 =head1 NAME
 
-UNIVERSAL::can - Hack around people calling UNIVERSAL::can() as a function
-
-=head1 VERSION
-
-Version 1.16
+UNIVERSAL::can - work around buggy code calling UNIVERSAL::can() as a function
 
 =head1 SYNOPSIS
 
@@ -143,12 +142,14 @@ C<SUPER::can>.
 
 Daniel LeWarne found and fixed a deep recursion error.
 
+Norbert Buchmüller fixed an overloading bug in blessed invocants.
+
 The Perl QA list had a huge... discussion... which inspired my realization that
 this module needed to do what it does now.
 
 =head1 COPYRIGHT & LICENSE
 
-Artistic License 2.0, copyright (c) 2005 - 2010 chromatic. Some rights
+Artistic License 2.0, copyright (c) 2005 - 2011 chromatic. Some rights
 reserved.
 
 =cut
