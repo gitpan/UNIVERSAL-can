@@ -1,11 +1,12 @@
 package UNIVERSAL::can;
 BEGIN {
-  $UNIVERSAL::can::VERSION = '1.20110614';
+  $UNIVERSAL::can::VERSION = '1.20110617';
 }
 # ABSTRACT: work around buggy code calling UNIVERSAL::can() as a function
 
 use strict;
 use warnings;
+use 5.008;
 
 use vars qw( $recursing $always_warn );
 
