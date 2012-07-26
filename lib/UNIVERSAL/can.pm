@@ -1,6 +1,6 @@
 package UNIVERSAL::can;
-BEGIN {
-  $UNIVERSAL::can::VERSION = '1.20110617';
+{
+  $UNIVERSAL::can::VERSION = '1.20120726';
 }
 # ABSTRACT: work around buggy code calling UNIVERSAL::can() as a function
 

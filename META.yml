@@ -8,7 +8,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Dist::Zilla version 4.300020, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,9 +17,11 @@ name: UNIVERSAL-can
 requires:
   Scalar::Util: 0
   perl: 5.008
+  strict: 0
   vars: 0
+  warnings: 0
   warnings::register: 0
 resources:
   homepage: https://github.com/chromatic/UNIVERSAL-can
   repository: https://github.com/chromatic/UNIVERSAL-can.git
-version: 1.20110617
+version: 1.20120726
