@@ -1,9 +1,6 @@
 package UNIVERSAL::can;
-{
-  $UNIVERSAL::can::VERSION = '1.20140124';
-}
 # ABSTRACT: work around buggy code calling UNIVERSAL::can() as a function
-
+$UNIVERSAL::can::VERSION = '1.20140328';
 use strict;
 use warnings;
 use 5.008;
@@ -44,6 +41,8 @@ sub can
                 || (   defined $caller
                    &&  defined $_[0]
                    &&  eval { local $recursing = 1;
+                              warnings->unimport( 'UNIVERSAL::isa' )
+                                  if $INC{'UNIVERSAL::isa'};
                               $caller->isa(blessed $_[0] || $_[0]) } );
 
     # call an overridden can() if it exists
